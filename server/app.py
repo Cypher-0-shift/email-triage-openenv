@@ -123,4 +123,9 @@ def create_app(max_concurrent_envs: int = 1) -> FastAPI:
     return app
 
 
-app = create_app()
+def main():
+    import uvicorn
+    uvicorn.run("email_triage_env.server.app:app", host="0.0.0.0", port=8000, reload=False)
+
+if __name__ == "__main__":
+    main()

@@ -12,10 +12,8 @@ dependencies = [
     "uvicorn[standard]>=0.24.0",
     "pydantic>=2.0.0",
     "httpx>=0.25.0",
+    "openenv-core>=0.2.0"
 ]
 
 [project.scripts]
-server = "email_triage_env.server.app:app"
-
-[tool.setuptools.packages.find]
-where = ["."]
+email-triage-env = "server.app:main"
