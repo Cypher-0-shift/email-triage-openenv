@@ -1,0 +1,40 @@
+spec_version: 1
+name: email_triage_env
+version: "1.0.0"
+description: >
+  A real-world email triage environment where agents classify, reply to,
+  flag, and delegate emails across 3 tasks of increasing difficulty.
+  Designed for training and evaluating LLM-based agents on practical
+  business communication tasks.
+
+type: environment
+runtime: docker
+
+app:
+  port: 8000
+  health_endpoint: /health
+  reset_endpoint: /reset
+  step_endpoint: /step
+  state_endpoint: /state
+
+tasks:
+  - name: basic_triage
+    description: "5 emails: obvious spam, urgent outage, newsletters, and a simple customer reply"
+    difficulty: easy
+    max_steps: 5
+  - name: priority_inbox
+    description: "8 emails: legal notices, billing, PR, HR — requires correct label + routing flag"
+    difficulty: medium
+    max_steps: 8
+  - name: crisis_response
+    description: "10 emails: simultaneous crises, regulator notices, media — reply quality graded"
+    difficulty: hard
+    max_steps: 10
+
+tags:
+  - openenv
+  - email
+  - triage
+  - real-world
+  - nlp
+  - llm-agent
